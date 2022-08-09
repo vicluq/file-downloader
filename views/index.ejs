@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Share a file</h1>
+    <!-- multipart/form-data => large files, send in parts -->
+    <!-- /upload -> o html é renderizado pelo server, o dominio é o mesmo, ent bota so /upload -->
+    <form action="/upload" method="post" name="file_sharing" enctype="multipart/form-data">
+        <label for="file">File: </label>
+        <input type="file" name="file" id="file" required>
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Share</button>
+    </form>
+    <% if(file_link) { %> 
+        <div>
+            <h3>Uploaded your file!</h3>
+            <a href="<%= file_link %>"><%= file_link %></a>
+        </div>
+    <% } %> 
+</body>
+</html>
