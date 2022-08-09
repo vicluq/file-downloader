@@ -10,6 +10,7 @@
     <h1>Share a file</h1>
     <!-- multipart/form-data => large files, send in parts -->
     <!-- /upload -> o html é renderizado pelo server, o dominio é o mesmo, ent bota so /upload -->
+    <!-- Se tirar o action, ele envia para a url que estamos -->
     <form action="/upload" method="post" name="file_sharing" enctype="multipart/form-data">
         <label for="file">File: </label>
         <input type="file" name="file" id="file" required>
@@ -17,10 +18,10 @@
         <input type="password" name="password" id="password">
         <button type="submit">Share</button>
     </form>
-    <% if(file_link) { %> 
+    <% if(locals.file_url) { %> 
         <div>
             <h3>Uploaded your file!</h3>
-            <a href="<%= file_link %>"><%= file_link %></a>
+            <a href="<%= locals.file_url %>"><%= locals.file_url %></a>
         </div>
     <% } %> 
 </body>
